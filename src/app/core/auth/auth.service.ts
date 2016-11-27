@@ -16,7 +16,14 @@ export class AuthService {
             })
             .then(
                 res => {
-                    return Promise.resolve(res);
+                    return this.af.database
+                    .object('/users/' + res.uid)
+                    .set({
+                        uid: res.uid,
+                        name: user.name,
+                        email: user.email
+                    })
+                    .then(() => Promise.resolve(res));
                 },
                 err => Promise.reject({
                     message: err.message
