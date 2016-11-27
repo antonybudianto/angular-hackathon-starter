@@ -1,0 +1,11 @@
+.env
+npm-debug.log
+.idea/
+.vscode/
+/coverage
+/node_modules
+/bower_components
+/dist
+/dll-dist
+/typings
+.DS_Store
