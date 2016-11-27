@@ -3,11 +3,12 @@ const webpackMerge = require('webpack-merge');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
 const ngtools = require('@ngtools/webpack');
+const env = require('dotenv').config({ silent: true });
+const _ = require('lodash');
 
 const commonConfig = require('./webpack.common.js');
 const helpers = require('./helpers');
-
-const ENV = process.env.APP_ENV || 'production';
+const envMap = _.mapValues(env, v => JSON.stringify(v));
 
 module.exports = webpackMerge(commonConfig, {
   devtool: 'source-map',
@@ -44,11 +45,6 @@ module.exports = webpackMerge(commonConfig, {
       filename: '[name].[hash].css',
       allChunks: true
     }),
-    new webpack.DefinePlugin({
-      'process.env': {
-        'APP_ENV': JSON.stringify(ENV)
-      }
-    }),
     new webpack.LoaderOptionsPlugin({
       options: {
         postcss: [require('postcss-cssnext')],
@@ -56,6 +52,9 @@ module.exports = webpackMerge(commonConfig, {
           minimize: false // workaround for ng2
         }
       }
+    }),
+    new webpack.DefinePlugin({
+      'process.env': envMap
     }),
     new CompressionPlugin({
         asset: "[path].gz[query]",
