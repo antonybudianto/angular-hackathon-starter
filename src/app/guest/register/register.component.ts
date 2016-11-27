@@ -37,7 +37,7 @@ export class RegisterComponent {
             return;
         }
 
-        let newUser = new User(formValue.name, formValue.email, formValue.password);
+        let newUser = new User('', formValue.name, formValue.email, formValue.password);
         this.isLoading = true;
 
         this.authService
