@@ -1,9 +1,15 @@
+@font-face {
+  font-family: 'Lato';
+  src: url('./assets/font/Lato/Lato-Regular.ttf');
+}
+
 :root {
   --mainColor: gray;
 }
 
 body {
     background-color: var(--mainColor);
+    font-family: Lato;
 }
 
 .center-fix {
