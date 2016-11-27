@@ -1,12 +1,12 @@
 {
-  "name": "angular-webpack-starter",
+  "name": "angular-hackathon-starter",
   "version": "2.0.0-beta.2",
   "author": "Antony Budianto",
-  "description": "Angular Webpack Starter with extensible features",
+  "description": "Angular Hackathon Starter",
   "main": "src/app/main.ts",
   "repository": {
     "type": "git",
-    "url": "https://github.com/antonybudianto/angular-webpack-starter.git"
+    "url": "https://github.com/antonybudianto/angular-hackathon-starter.git"
   },
   "engines": {
     "node": ">=4.3",
@@ -50,7 +50,7 @@
   ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/antonybudianto/angular-webpack-starter/issues"
+    "url": "https://github.com/antonybudianto/angular-hackathon-starter/issues"
   },
   "dependencies": {
     "@angular/common": "2.2.1",
