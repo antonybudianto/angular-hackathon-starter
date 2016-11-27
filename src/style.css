@@ -3,12 +3,7 @@
   src: url('./assets/font/Lato/Lato-Regular.ttf');
 }
 
-:root {
-  --mainColor: gray;
-}
-
 body {
-    background-color: var(--mainColor);
     font-family: Lato;
 }
 
