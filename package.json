@@ -71,6 +71,7 @@
     "angular2-template-loader": "^0.6.0",
     "awesome-typescript-loader": "^2.2.4",
     "bootstrap": "^3.3.7",
+    "bootswatch": "^3.3.7",
     "chalk": "^1.1.3",
     "codelyzer": "1.0.0-beta.4",
     "compression-webpack-plugin": "0.3.2",

@@ -5,6 +5,8 @@
 
 body {
     font-family: Lato;
+    width: 100%;
+    height: 100%;
 }
 
 .center-fix {
@@ -17,4 +19,8 @@ body {
 
 .main-spinner {
     font-size: 3em;
+}
+
+.margin-top {
+    margin-top: 20px;
 }
