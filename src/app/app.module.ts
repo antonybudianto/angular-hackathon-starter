@@ -1,3 +1,4 @@
+import { GuestRoutingModule } from './guest/guest-routing.module';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -16,6 +17,7 @@ import { AppComponent } from './app.component';
         CoreModule,
         SharedModule,
         HomeModule,
+        GuestRoutingModule,
         AppRoutingModule
     ],
     bootstrap: [ AppComponent ]

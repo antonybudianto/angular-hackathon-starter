@@ -1,3 +1,4 @@
+import { User } from './user.model';
 import { Injectable } from '@angular/core';
 
 import { AngularFire, AuthProviders, AuthMethods } from 'angularfire2';
@@ -7,9 +8,25 @@ export class AuthService {
     constructor(private af: AngularFire) {
     }
 
+    createUser(user: User): Promise<any> {
+        return this.af.auth
+            .createUser({
+                email: user.email,
+                password: user.password
+            })
+            .then(
+                res => {
+                    return Promise.resolve(res);
+                },
+                err => Promise.reject({
+                    message: err.message
+                })
+            );
+    }
+
     loginWithPassword(email: string, password: string): Promise<any> {
         return this.af.auth
-            .login({ email: email, password: password })
+            .login({ email, password })
             .then(
                 res => Promise.resolve(res),
                 err => Promise.reject({

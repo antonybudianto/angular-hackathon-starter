@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { AuthService } from './../core/auth/auth.service';
+import { AuthService } from '../../core/auth/auth.service';
 
 @Component({
     selector: 'app-signin',
@@ -24,15 +24,20 @@ export class SignInComponent {
         };
     }
 
-    handleSubmit(formValue: any) {
+    handleSubmit(form: any) {
+        let formValue = form.value;
         this.submitted = true;
+
+        if (!form.valid) {
+            return;
+        }
+
         this.isLoading = true;
         this.errorMessage = '';
         this.authService
             .loginWithPassword(formValue.email, formValue.password)
             .then(res => console.log(res), err => this.errorMessage = err.message)
             .then(() => {
-                this.submitted = false;
                 this.isLoading = false;
             });
     }

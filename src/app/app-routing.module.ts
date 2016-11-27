@@ -5,10 +5,6 @@ const appRoutes: Routes = [
     {
         path: 'todolist',
         loadChildren: 'app/todolist/todolist.module#TodolistModule'
-    },
-    {
-        path: 'signin',
-        loadChildren: 'app/signin/signin.module#SignInModule'
     }
 ];
 
