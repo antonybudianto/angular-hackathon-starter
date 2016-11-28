@@ -22,11 +22,21 @@
                                 <label class="control-label" for="password">Password</label>
                                 <input required class="form-control" placeholder="Please enter your password" type="password" name="password" [ngModel]="registerModel.password" #password="ngModel"/>
                             </div>
-                            <div class="center-block">
-                                <button [disabled]="isLoading" class="btn btn-primary pull-right">
+                            <div class="row">
+                                <div class="col-md-9">
+                                    <div class="checkbox">
+                                        <label for="agree">
+                                            <input id="agree" name="agree" [ngModel]="registerModel.agree" #agree="ngModel" required type="checkbox">
+                                            I have read and agree to the terms and conditions
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <button [disabled]="isLoading" class="btn btn-primary pull-right">
                                     <span *ngIf="isLoading"><i class="fa fa-spin fa-spinner"></i></span>
                                     Register
                                     </button>
+                                </div>
                             </div>
                         </form>
                     </div>
@@ -38,7 +48,7 @@
                             or
                         </div>
                     </div>
-                    <app-social-login></app-social-login>
+                    <app-social-login (successLogin)="handleSuccessLogin($event)"></app-social-login>
                 </div>
             </div>
         </div>

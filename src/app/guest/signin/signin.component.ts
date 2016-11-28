@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { AuthService } from '../../core/auth/auth.service';
 
@@ -15,7 +16,8 @@ export class SignInComponent {
     errorMessage: string;
     isLoading: boolean;
 
-    constructor(private authService: AuthService) {
+    constructor(private authService: AuthService,
+                private router: Router) {
         this.submitted = false;
         this.isLoading = false;
         this.signInModel = {
@@ -40,5 +42,9 @@ export class SignInComponent {
             .then(() => {
                 this.isLoading = false;
             });
+    }
+
+    handleSuccessLogin() {
+        this.router.navigate(['/dashboard']);
     }
 }

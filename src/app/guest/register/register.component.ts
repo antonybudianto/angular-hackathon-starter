@@ -1,6 +1,7 @@
-import { User } from './../../core/auth/user.model';
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
+import { User } from './../../core/auth/user.model';
 import { AuthService } from './../../core/auth/auth.service';
 
 @Component({
@@ -17,14 +18,16 @@ export class RegisterComponent {
     errorMessage: string;
     afterRegister: boolean;
 
-    constructor(private authService: AuthService) {
+    constructor(private authService: AuthService,
+                private router: Router) {
         this.submitted = false;
         this.isLoading = false;
         this.afterRegister = false;
         this.registerModel = {
             name: '',
             email: '',
-            password: ''
+            password: '',
+            agree: false
         };
     }
 
@@ -37,6 +40,11 @@ export class RegisterComponent {
             return;
         }
 
+        if (!formValue.agree) {
+            this.errorMessage = 'You must read and agree to the terms and conditions';
+            return;
+        }
+
         let newUser = new User('', formValue.name, formValue.email, formValue.password);
         this.isLoading = true;
 
@@ -45,11 +53,14 @@ export class RegisterComponent {
             .then(
                 res => {
                     this.afterRegister = true;
-                    console.log(res);
                 },
                 err => this.errorMessage = err.message)
             .then(() => {
                 this.isLoading = false;
             });
+    }
+
+    handleSuccessLogin() {
+        this.router.navigate(['/dashboard']);
     }
 }

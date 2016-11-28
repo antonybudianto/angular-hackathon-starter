@@ -3,8 +3,8 @@ import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
 
 const appRoutes: Routes = [
     {
-        path: 'todolist',
-        loadChildren: 'app/todolist/todolist.module#TodolistModule'
+        path: 'dashboard',
+        loadChildren: 'app/dashboard/dashboard.module#DashboardModule'
     }
 ];
 
