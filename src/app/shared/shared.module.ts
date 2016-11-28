@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
+import { SocialLoginModule } from './social-login/social-login.module';
+
 @NgModule({
     imports: [
         CommonModule,
@@ -10,7 +12,8 @@ import { FormsModule } from '@angular/forms';
     declarations: [],
     exports: [
         CommonModule,
-        FormsModule
+        FormsModule,
+        SocialLoginModule
     ]
 })
 export class SharedModule { }
