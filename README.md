@@ -1,13 +1,12 @@
 # Angular Hackathon Starter
 
 [![Build Status](https://travis-ci.org/antonybudianto/angular-hackathon-starter.svg?branch=master)](https://travis-ci.org/antonybudianto/angular-hackathon-starter)
-[![Build status](https://ci.appveyor.com/api/projects/status/d5b3a9nnxnv5bxa5/branch/master?svg=true)](https://ci.appveyor.com/project/antonybudianto/angular-hackathon-starter/branch/master)
 [![Coverage Status](https://coveralls.io/repos/github/antonybudianto/angular-hackathon-starter/badge.svg?branch=master)](https://coveralls.io/github/antonybudianto/angular-hackathon-starter?branch=master)
 [![Dependency Status](https://david-dm.org/antonybudianto/angular-hackathon-starter.svg)](https://david-dm.org/antonybudianto/angular-hackathon-starter)
 [![devDependency Status](https://david-dm.org/antonybudianto/angular-hackathon-starter/dev-status.svg)](https://david-dm.org/antonybudianto/angular-hackathon-starter#info=devDependencies)
 [![Dependency Status](https://dependencyci.com/github/antonybudianto/angular-hackathon-starter/badge)](https://dependencyci.com/github/antonybudianto/angular-hackathon-starter)
 
-> Live Production Build [Demo](http://angular-hackathon-starter.surge.sh/)
+> Live Production Build [Demo](http://angular-hackathon-starter.surge.sh/) - Coming soon!
 
 ## Introduction
 Welcome to Angular Hackathon Starter!
@@ -20,7 +19,7 @@ This starter is specially made for hackathon enthusiasts
 * [Angular](https://angular.io)
 * [Firebase](https://firebase.google.com)
 
-Please visit the [wiki](https://github.com/antonybudianto/angular-hackathon-starter/wiki) for more details.
+Please visit the main [wiki](https://github.com/antonybudianto/angular-webpack-starter/wiki) for more details.
 
 ## Prerequisites
 You need to have [Node.js and npm](https://nodejs.org/en/)
@@ -36,7 +35,7 @@ Go to the starter directory and install the packages ([Yarn](https://github.com/
 npm install
 ```
 
-Then copy `.env.example` and rename it as `.env`. For more [details](https://github.com/antonybudianto/angular-hackathon-starter/wiki/Environment-Variables)
+Then copy `.env.example` and rename it as `.env`. For more [details](https://github.com/antonybudianto/angular-webpack-starter/wiki/Environment-Variables)
 
 ## Start
 Let's start up, run following:
@@ -78,7 +77,7 @@ npm run e2e
 ```
 
 ## Production
-> For more details, visit [Continuous Integration  wiki](https://github.com/antonybudianto/angular-hackathon-starter/wiki/Continuous-Integration)
+> For more details, visit [Continuous Integration  wiki](https://github.com/antonybudianto/angular-webpack-starter/wiki/Continuous-Integration)
 
 You can create production build by running:
 ```bash
