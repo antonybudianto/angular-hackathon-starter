@@ -1,0 +1,56 @@
+<div class="container">
+    <div class="col-md-6 col-md-offset-3">
+        <div class="panel panel-default margin-with-nav">
+            <div class="panel-heading">Register</div>
+            <div class="panel-body" *ngIf="afterRegister">
+                Thank you for registering! Now you can <a [routerLink]="['/signin']">sign in here</a>
+            </div>
+            <div class="panel-body" *ngIf="!afterRegister">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="alert alert-warning" *ngIf="errorMessage"><i class="fa fa-warning"></i> {{errorMessage}}</div>
+                        <form autocomplete="off" (submit)="handleSubmit(registerForm)" #registerForm="ngForm" novalidate>
+                            <div class="form-group" [ngClass]="{'has-success': name.valid, 'has-error': name.invalid && submitted}">
+                                <label class="control-label" for="name">Name</label>
+                                <input required class="form-control" placeholder="Please enter your name" type="text" name="name" [ngModel]="registerModel.name" #name="ngModel"/>
+                            </div>
+                            <div class="form-group" [ngClass]="{'has-success': email.valid, 'has-error': email.invalid && submitted}">
+                                <label class="control-label" for="email">Email</label>
+                                <input required class="form-control" placeholder="Please enter your email address" type="text" name="email" [ngModel]="registerModel.email" #email="ngModel"/>
+                            </div>
+                            <div class="form-group" [ngClass]="{'has-success': password.valid, 'has-error': password.invalid && submitted}">
+                                <label class="control-label" for="password">Password</label>
+                                <input required class="form-control" placeholder="Please enter your password" type="password" name="password" [ngModel]="registerModel.password" #password="ngModel"/>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-9">
+                                    <div class="checkbox">
+                                        <label for="agree">
+                                            <input id="agree" name="agree" [ngModel]="registerModel.agree" #agree="ngModel" required type="checkbox">
+                                            I have read and agree to the terms and conditions
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <button [disabled]="isLoading" class="btn btn-primary pull-right">
+                                    <span *ngIf="isLoading"><i class="fa fa-spin fa-spinner"></i></span>
+                                    Register
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <hr>
+                        <div class="text-center">
+                            or
+                        </div>
+                    </div>
+                    <app-social-login (successLogin)="handleSuccessLogin($event)"></app-social-login>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

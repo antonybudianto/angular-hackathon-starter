@@ -1,8 +1,10 @@
+import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+
 import { SignInComponent } from './signin.component';
 import { SignInRoutingModule } from './signin-routing.module';
-import { NgModule } from '@angular/core';
+import { SharedModule } from './../../shared/shared.module';
 
 @NgModule({
     declarations: [
@@ -10,6 +12,7 @@ import { NgModule } from '@angular/core';
     ],
     imports: [
         CommonModule,
+        SharedModule,
         SignInRoutingModule,
         FormsModule
     ]

@@ -21,6 +21,10 @@ body {
     font-size: 3em;
 }
 
+.margin-with-nav {
+    margin-top: 50px;
+}
+
 .margin-top {
     margin-top: 20px;
 }

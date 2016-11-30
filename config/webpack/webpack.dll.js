@@ -1,12 +1,13 @@
 const webpack = require('webpack');
+const webpackMerge = require('webpack-merge');
 
-const helpers = require('./helpers');
+const coreconfig = require('./webpack.core');
 const constants = require('./constants');
 
-module.exports = {
+module.exports = webpackMerge(coreconfig, {
   entry: {
     'polyfills': [ './src/polyfills.ts' ],
-    'vendor': [ './src/vendor.ts' ]
+    'vendorDll': [ './src/vendor.dll.ts' ]
   },
 
   output: {
@@ -28,18 +29,6 @@ module.exports = {
       // require function has been assigned to. This must match the
       // output.library option above
       name: '[name]'
-    }),
-
-    new webpack.ProvidePlugin({
-        jQuery: 'jquery',
-        $: 'jquery',
-        jquery: 'jquery'
-    }),
-
-    new webpack.ContextReplacementPlugin(
-      // The (\\|\/) piece accounts for path separators in *nix and Windows
-      constants.CONTEXT_REPLACE_REGEX,
-      helpers.root('./src') // location of your src
-    )
+    })
   ],
-};
+});
