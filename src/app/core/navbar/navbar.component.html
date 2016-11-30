@@ -23,8 +23,10 @@
                     <a href="#contact">Contact</a>
                 </li>
                 <li>
-                    <button [routerLink]="['/register']" class="btn btn-default navbar-btn">Register</button>
-                    <button [routerLink]="['/signin']" class="btn btn-default navbar-btn">Sign in</button>
+                    <div class="button-container">
+                        <button [routerLink]="['/register']" class="btn btn-default navbar-btn">Register</button>
+                        <button [routerLink]="['/signin']" class="btn btn-default navbar-btn">Sign in</button>
+                    </div>
                 </li>
             </ul>
         </div>
