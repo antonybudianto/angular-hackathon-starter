@@ -17,6 +17,9 @@ import '@angular/router';
 // HMR
 import '@angularclass/hmr';
 
+import 'firebase';
+import 'angularfire2';
+
 // RxJS
 // Uncomment below if you use RxJS in many non-preload lazy-loaded modules
 // import 'rxjs';
