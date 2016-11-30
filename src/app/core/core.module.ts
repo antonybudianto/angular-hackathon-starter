@@ -1,9 +1,10 @@
-import { AuthService } from './auth/auth.service';
-import { AppFirebaseModule } from './firebase/app-firebase.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
+import { AppFirebaseModule } from './firebase/app-firebase.module';
 import { NavbarModule } from './navbar/navbar.module';
+import { AuthGuard } from './auth/auth.guard';
+import { AuthService } from './auth/auth.service';
 
 @NgModule({
     imports: [
@@ -15,7 +16,8 @@ import { NavbarModule } from './navbar/navbar.module';
         NavbarModule
     ],
     providers: [
-        AuthService
+        AuthService,
+        AuthGuard
     ]
 })
 export class CoreModule {
