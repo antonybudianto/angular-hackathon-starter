@@ -73,9 +73,9 @@
   dependencies:
     "@angular-cli/ast-tools" "^1.0.0"
 
-"@types/core-js@0.9.34":
-  version "0.9.34"
-  resolved "https://registry.yarnpkg.com/@types/core-js/-/core-js-0.9.34.tgz#72c521d8e59fdaa8b65f76db71fa53c82c7c21c5"
+"@types/core-js@0.9.35":
+  version "0.9.35"
+  resolved "https://registry.yarnpkg.com/@types/core-js/-/core-js-0.9.35.tgz#444064e63711cdcc62ea844d27642f6efc2285f2"
 
 "@types/jasmine@2.5.38", "@types/jasmine@^2.5.36":
   version "2.5.38"
@@ -104,8 +104,8 @@
   resolved "https://registry.yarnpkg.com/@types/selenium-webdriver/-/selenium-webdriver-2.44.28.tgz#d9c12068bf06d1de95fa31a65a0abcba1aa9fcbc"
 
 "@types/selenium-webdriver@~2.53.31":
-  version "2.53.35"
-  resolved "https://registry.yarnpkg.com/@types/selenium-webdriver/-/selenium-webdriver-2.53.35.tgz#a0c4b5f090bde48ba9ed16e4d43a5b99112c72fb"
+  version "2.53.36"
+  resolved "https://registry.yarnpkg.com/@types/selenium-webdriver/-/selenium-webdriver-2.53.36.tgz#a2d27d0709b368ae0894fc30c0e40af827d6e851"
 
 Base64@~0.2.0:
   version "0.2.1"
@@ -406,7 +406,7 @@ autoprefixer@^6.0.2, autoprefixer@^6.3.1:
     postcss "^5.2.5"
     postcss-value-parser "^3.2.3"
 
-awesome-typescript-loader@^2.2.4:
+awesome-typescript-loader@2.2.4:
   version "2.2.4"
   resolved "https://registry.yarnpkg.com/awesome-typescript-loader/-/awesome-typescript-loader-2.2.4.tgz#4185d60c035c25515f9c2a747fa5f69b2a001e9e"
   dependencies:
@@ -801,8 +801,8 @@ caniuse-api@^1.3.2:
     shelljs "^0.7.0"
 
 caniuse-db@^1.0.30000346, caniuse-db@^1.0.30000539, caniuse-db@^1.0.30000578:
-  version "1.0.30000588"
-  resolved "https://registry.yarnpkg.com/caniuse-db/-/caniuse-db-1.0.30000588.tgz#20baa051c5bd7e33ae32c7781b5379289c3d39d2"
+  version "1.0.30000590"
+  resolved "https://registry.yarnpkg.com/caniuse-db/-/caniuse-db-1.0.30000590.tgz#306e2b133ce467e8341b2accd223256b4040b2be"
 
 capture-stack-trace@^1.0.0:
   version "1.0.0"
@@ -3224,6 +3224,10 @@ lodash.camelcase@^4.3.0:
   version "4.3.0"
   resolved "https://registry.yarnpkg.com/lodash.camelcase/-/lodash.camelcase-4.3.0.tgz#b28aa6288a2b9fc651035c7711f65ab6190331a6"
 
+lodash.clonedeep@^4.5.0:
+  version "4.5.0"
+  resolved "https://registry.yarnpkg.com/lodash.clonedeep/-/lodash.clonedeep-4.5.0.tgz#e23f3f9c4f8fbdde872529c1071857a086e5ccef"
+
 lodash.differencewith@^4.5.0:
   version "4.5.0"
   resolved "https://registry.yarnpkg.com/lodash.differencewith/-/lodash.differencewith-4.5.0.tgz#bafafbc918b55154e179176a00bb0aefaac854b7"
@@ -3690,9 +3694,9 @@ normalize-url@^1.4.0:
     query-string "^4.1.0"
     sort-keys "^1.0.0"
 
-npm-run-all@^3.1.1:
-  version "3.1.1"
-  resolved "https://registry.yarnpkg.com/npm-run-all/-/npm-run-all-3.1.1.tgz#5c6fe867332f08342b1a1ea99f447ab86c95cb02"
+npm-run-all@^3.1.2:
+  version "3.1.2"
+  resolved "https://registry.yarnpkg.com/npm-run-all/-/npm-run-all-3.1.2.tgz#c7e3faf4aa0a59bf0dcfc12601166151692171cf"
   dependencies:
     chalk "^1.1.3"
     cross-spawn "^4.0.0"
@@ -4176,7 +4180,7 @@ postcss-convert-values@^2.3.4:
     postcss "^5.0.11"
     postcss-value-parser "^3.1.2"
 
-postcss-cssnext@^2.8.0:
+postcss-cssnext@^2.9.0:
   version "2.9.0"
   resolved "https://registry.yarnpkg.com/postcss-cssnext/-/postcss-cssnext-2.9.0.tgz#064df2a8c21fd2ebb88825df372cf20fca882868"
   dependencies:
@@ -4282,8 +4286,8 @@ postcss-font-variant@^2.0.0:
     postcss "^5.0.4"
 
 postcss-initial@^1.3.1:
-  version "1.5.2"
-  resolved "https://registry.yarnpkg.com/postcss-initial/-/postcss-initial-1.5.2.tgz#61eb5ad871e7991aadfb3f497b16fe61aea92ffb"
+  version "1.5.3"
+  resolved "https://registry.yarnpkg.com/postcss-initial/-/postcss-initial-1.5.3.tgz#20c3e91c96822ddb1bed49508db96d56bac377d0"
   dependencies:
     lodash.template "^4.2.4"
     postcss "^5.0.19"
@@ -5820,9 +5824,9 @@ tsickle@^0.1.7:
     source-map "^0.4.2"
     source-map-support "^0.3.1"
 
-tslint-loader@^3.2.0:
-  version "3.2.0"
-  resolved "https://registry.yarnpkg.com/tslint-loader/-/tslint-loader-3.2.0.tgz#de6f842a8ea4aa1c4ab995b670b95a1f54845821"
+tslint-loader@^3.2.1:
+  version "3.2.1"
+  resolved "https://registry.yarnpkg.com/tslint-loader/-/tslint-loader-3.2.1.tgz#68f39ad778f2c38521a76f16b1980757225d5e69"
   dependencies:
     loader-utils "^0.2.7"
     mkdirp "^0.5.1"
@@ -5880,8 +5884,8 @@ ua-parser-js@0.7.10:
   resolved "https://registry.yarnpkg.com/ua-parser-js/-/ua-parser-js-0.7.10.tgz#917559ddcce07cbc09ece7d80495e4c268f4ef9f"
 
 uglify-js@2.7.x, uglify-js@^2.6, uglify-js@~2.7.3:
-  version "2.7.4"
-  resolved "https://registry.yarnpkg.com/uglify-js/-/uglify-js-2.7.4.tgz#a295a0de12b6a650c031c40deb0dc40b14568bd2"
+  version "2.7.5"
+  resolved "https://registry.yarnpkg.com/uglify-js/-/uglify-js-2.7.5.tgz#4612c0c7baaee2ba7c487de4904ae122079f2ca8"
   dependencies:
     async "~0.2.6"
     source-map "~0.5.1"
@@ -6107,8 +6111,8 @@ wbuf@^1.1.0, wbuf@^1.4.0:
     minimalistic-assert "^1.0.0"
 
 webdriver-manager@^10.2.8:
-  version "10.2.8"
-  resolved "https://registry.yarnpkg.com/webdriver-manager/-/webdriver-manager-10.2.8.tgz#b3b4ef7983271a97b9432c4211c39ff5caecd9dc"
+  version "10.2.9"
+  resolved "https://registry.yarnpkg.com/webdriver-manager/-/webdriver-manager-10.2.9.tgz#b1f28d42ccf115fc02215cd5b07cbaca4f302583"
   dependencies:
     adm-zip "^0.4.7"
     chalk "^1.1.1"
@@ -6169,10 +6173,11 @@ webpack-dev-server@^2.1.0-beta.11:
     webpack-dev-middleware "^1.4.0"
     yargs "^6.0.0"
 
-webpack-merge@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/webpack-merge/-/webpack-merge-1.0.1.tgz#d8dd735edf1419b922d154ec9a192854e6ed4e0e"
+webpack-merge@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/webpack-merge/-/webpack-merge-1.0.2.tgz#b28f4c895361f1a985a96952760d7170679779b4"
   dependencies:
+    lodash.clonedeep "^4.5.0"
     lodash.differencewith "^4.5.0"
     lodash.isequal "^4.4.0"
     lodash.isfunction "^3.0.8"
@@ -6300,10 +6305,11 @@ wordwrap@~0.0.2:
   resolved "https://registry.yarnpkg.com/wordwrap/-/wordwrap-0.0.3.tgz#a3d5da6cd5c0bc0008d37234bbaf1bed63059107"
 
 wrap-ansi@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/wrap-ansi/-/wrap-ansi-2.0.0.tgz#7d30f8f873f9a5bbc3a64dabc8d177e071ae426f"
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/wrap-ansi/-/wrap-ansi-2.1.0.tgz#d8fc3d284dd05794fe84973caecdd1cf824fdd85"
   dependencies:
     string-width "^1.0.1"
+    strip-ansi "^3.0.1"
 
 wrappy@1:
   version "1.0.2"
@@ -6380,9 +6386,9 @@ yallist@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/yallist/-/yallist-2.0.0.tgz#306c543835f09ee1a4cb23b7bce9ab341c91cdd4"
 
-yargs-parser@^4.0.2, yargs-parser@^4.1.0:
-  version "4.1.0"
-  resolved "https://registry.yarnpkg.com/yargs-parser/-/yargs-parser-4.1.0.tgz#313df030f20124124aeae8fbab2da53ec28c56d7"
+yargs-parser@^4.0.2, yargs-parser@^4.2.0:
+  version "4.2.0"
+  resolved "https://registry.yarnpkg.com/yargs-parser/-/yargs-parser-4.2.0.tgz#6ced869cd05a3dca6a1eaee38b68aeed4b0b4101"
   dependencies:
     camelcase "^3.0.0"
 
@@ -6416,8 +6422,8 @@ yargs@6.0.0:
     yargs-parser "^4.0.2"
 
 yargs@^6.0.0:
-  version "6.4.0"
-  resolved "https://registry.yarnpkg.com/yargs/-/yargs-6.4.0.tgz#816e1a866d5598ccf34e5596ddce22d92da490d4"
+  version "6.5.0"
+  resolved "https://registry.yarnpkg.com/yargs/-/yargs-6.5.0.tgz#a902e23a1f0fe912b2a03f6131b7ed740c9718ff"
   dependencies:
     camelcase "^3.0.0"
     cliui "^3.2.0"
@@ -6432,7 +6438,7 @@ yargs@^6.0.0:
     which-module "^1.0.0"
     window-size "^0.2.0"
     y18n "^3.2.1"
-    yargs-parser "^4.1.0"
+    yargs-parser "^4.2.0"
 
 yargs@~3.10.0:
   version "3.10.0"
