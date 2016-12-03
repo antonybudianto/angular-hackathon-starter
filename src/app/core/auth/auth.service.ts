@@ -1,10 +1,15 @@
-import { User } from './user.model';
 import { Injectable } from '@angular/core';
 
 import { AngularFire, AuthProviders, AuthMethods } from 'angularfire2';
+import { Subscription } from 'rxjs/Subscription';
+import 'rxjs/add/operator/filter';
+
+import { User } from './user.model';
 
 @Injectable()
 export class AuthService {
+    private sendEmailSubscription: Subscription;
+
     constructor(private af: AngularFire) {
     }
 
@@ -16,6 +21,7 @@ export class AuthService {
             })
             .then(
                 res => {
+                    this.sendEmailVerification();
                     return this.af.database
                     .object('/users/' + res.uid)
                     .set({
@@ -29,6 +35,19 @@ export class AuthService {
                     message: err.message
                 })
             );
+    }
+
+    sendEmailVerification() {
+        this.sendEmailSubscription = this.af.auth
+        .filter(auth => !!auth)
+        .do(() => {
+            if (this.sendEmailSubscription) {
+                this.sendEmailSubscription.unsubscribe();
+            }
+        })
+        .subscribe(auth => {
+            auth.auth.sendEmailVerification();
+        });
     }
 
     loginWithPassword(email: string, password: string): Promise<any> {
