@@ -10,7 +10,6 @@ import { provideRoutes, Routes, RouterModule } from '@angular/router';
 import { Component, NO_ERRORS_SCHEMA } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { CoreModule } from './core/core.module';
 
 @Component({
     selector: 'app-test-cmp',
@@ -34,7 +33,7 @@ describe('AppComponent', () => {
                 TestRouterComponent,
                 AppComponent
             ],
-            imports: [ RouterTestingModule, RouterModule, CoreModule ],
+            imports: [ RouterTestingModule, RouterModule ],
             providers: [ provideRoutes(config) ],
             schemas: [ NO_ERRORS_SCHEMA ]
         })
