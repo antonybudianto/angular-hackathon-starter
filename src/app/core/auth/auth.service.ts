@@ -2,14 +2,18 @@ import { Injectable } from '@angular/core';
 
 import { AngularFire, AuthProviders, AuthMethods } from 'angularfire2';
 import { Subject, Observable, Subscription } from 'rxjs';
+import * as firebase from 'firebase';
 
 import { User } from './user.model';
 
 @Injectable()
 export class AuthService {
     private sendEmailSubscription: Subscription;
+    private firebaseAuth: any;
 
-    constructor(private af: AngularFire) {}
+    constructor(private af: AngularFire) {
+        this.firebaseAuth = firebase.auth();
+    }
 
     getAuth$(): Observable<User> {
         return this.af.auth
@@ -29,7 +33,7 @@ export class AuthService {
             })
             .then(
                 res => {
-                    this.sendEmailVerification();
+                    this.sendVerificationEmail();
                     return this.af.database
                     .object('/users/' + res.uid)
                     .set({
@@ -45,7 +49,11 @@ export class AuthService {
             );
     }
 
-    sendEmailVerification() {
+    sendPasswordResetEmail(email: string): Promise<any> {
+        return this.firebaseAuth.sendPasswordResetEmail(email);
+    }
+
+    sendVerificationEmail() {
         this.sendEmailSubscription = this.af.auth
         .filter(auth => !!auth)
         .do(() => {

@@ -9,6 +9,10 @@ const routes: Array<Route> = [
     {
         path: 'signin',
         loadChildren: 'app/guest/signin/signin.module#SignInModule'
+    },
+    {
+        path: 'reset-password',
+        loadChildren: 'app/guest/reset-password/reset-password.module#ResetPasswordModule'
     }
 ];
 
