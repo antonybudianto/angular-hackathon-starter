@@ -56,11 +56,7 @@ export class AuthService {
     sendVerificationEmail() {
         this.sendEmailSubscription = this.af.auth
         .filter(auth => !!auth)
-        .do(() => {
-            if (this.sendEmailSubscription) {
-                this.sendEmailSubscription.unsubscribe();
-            }
-        })
+        .take(1)
         .subscribe(auth => {
             auth.auth.sendEmailVerification();
         });
