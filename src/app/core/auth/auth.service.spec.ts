@@ -36,6 +36,7 @@ describe('Auth Service', () => {
     };
     mockAngularFire.auth.createUser = jasmine.createSpy('createUser');
     mockAngularFire.auth.login = jasmine.createSpy('login');
+    mockAngularFire.auth.logout = jasmine.createSpy('logout');
 
     service = new AuthService(mockAngularFire);
   });
@@ -47,6 +48,48 @@ describe('Auth Service', () => {
   it('should set password reset email', () => {
     service.sendPasswordResetEmail('antonybudianto@gmail.com');
     expect(mockFirebaseAuth.sendPasswordResetEmail).toHaveBeenCalled();
+  });
+
+  it('can login with google', () => {
+    service.loginWithGoogle();
+    expect(mockAngularFire.auth.login).toHaveBeenCalled();
+  });
+
+  it('can login with facebook', () => {
+    service.loginWithFacebook();
+    expect(mockAngularFire.auth.login).toHaveBeenCalled();
+  });
+
+  it('can login with twitter', () => {
+    service.loginWithTwitter();
+    expect(mockAngularFire.auth.login).toHaveBeenCalled();
+  });
+
+  it('should logout successfully', () => {
+    service.logout();
+    expect(mockAngularFire.auth.logout).toHaveBeenCalled();
+  });
+
+  describe('loginWithPassword', () => {
+    it('should login successfully', () => {
+      const mockResult = {
+        message: 'ok'
+      };
+      mockAngularFire.auth.login
+        .and.returnValue(Promise.resolve(mockResult));
+      service.loginWithPassword('test@t.com', 'asd')
+        .then(result => expect(result).toEqual(mockResult));
+    });
+
+    it('should handle login error', () => {
+      const mockError = {
+        message: 'error'
+      };
+      mockAngularFire.auth.login
+        .and.returnValue(Promise.reject(mockError));
+      service.loginWithPassword('test@t.com', 'asd')
+        .then(null, error => expect(error).toEqual(mockError));
+    });
   });
 
   describe('getAuth$', () => {
