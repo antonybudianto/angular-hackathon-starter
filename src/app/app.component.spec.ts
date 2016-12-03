@@ -7,7 +7,7 @@ import {
     ComponentFixture
 } from '@angular/core/testing';
 import { provideRoutes, Routes, RouterModule } from '@angular/router';
-import { Component } from '@angular/core';
+import { Component, NO_ERRORS_SCHEMA } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
@@ -25,28 +25,29 @@ let config: Routes = [
     }
 ];
 
+let fixture: ComponentFixture<AppComponent>;
+
 describe('AppComponent', () => {
-    beforeEach(() => {
+    beforeEach(async(() => {
         TestBed.configureTestingModule({
             declarations: [
                 TestRouterComponent,
                 AppComponent
             ],
             imports: [ RouterTestingModule, RouterModule, CoreModule ],
-            providers: [ provideRoutes(config) ]
-        });
+            providers: [ provideRoutes(config) ],
+            schemas: [ NO_ERRORS_SCHEMA ]
+        })
+        .compileComponents();
+    }));
+
+    beforeEach(() => {
+        fixture = TestBed.createComponent(AppComponent);
+        fixture.detectChanges();
     });
 
-    it('should have title Hello world', async(() => {
-        TestBed.compileComponents().then(() => {
-            let fixture: ComponentFixture<AppComponent>;
-            fixture = TestBed.createComponent(AppComponent);
-            fixture.detectChanges();
-
-            let compiled = fixture.debugElement.nativeElement;
-            expect(compiled).toBeDefined();
-            // TODO: find a way to compile the routed component
-            // expect(compiled.querySelector('div.title')).toMatch('Hello world');
-        });
-    }));
+    it('should be created', () => {
+        let compiled = fixture.debugElement.nativeElement;
+        expect(compiled).toBeDefined();
+    });
 });
