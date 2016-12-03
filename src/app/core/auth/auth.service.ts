@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 
 import { AngularFire, AuthProviders, AuthMethods } from 'angularfire2';
-import { Subscription } from 'rxjs/Subscription';
-import 'rxjs/add/operator/filter';
+import { Subject, Observable, Subscription } from 'rxjs';
 
 import { User } from './user.model';
 
@@ -10,7 +9,16 @@ import { User } from './user.model';
 export class AuthService {
     private sendEmailSubscription: Subscription;
 
-    constructor(private af: AngularFire) {
+    constructor(private af: AngularFire) {}
+
+    getAuth$(): Observable<User> {
+        return this.af.auth
+        .switchMap(auth => {
+            if (auth) {
+                return this.af.database.object('/users/' + auth.uid);
+            }
+            return Observable.of(null);
+        });
     }
 
     createUser(user: User): Promise<any> {
