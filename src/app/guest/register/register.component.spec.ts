@@ -97,7 +97,7 @@ describe('RegisterComponent', () => {
       });
     }));
 
-    it('should handle failed creating user', () => {
+    it('should handle failed creating user', async(() => {
       const mockForm = {
         valid: true,
         value: {
@@ -119,6 +119,6 @@ describe('RegisterComponent', () => {
         expect(component.errorMessage).toEqual(mockError.message);
         expect(mockAuthService.createUser).toHaveBeenCalled();
       });
-    });
+    }));
   });
 });

@@ -81,7 +81,7 @@ describe('SignInComponent', () => {
       });
     }));
 
-    it('should handle failed login', () => {
+    it('should handle failed login', async(() => {
       const mockForm = {
         valid: true,
         value: {
@@ -102,6 +102,6 @@ describe('SignInComponent', () => {
         expect(component.errorMessage).toEqual(mockError.message);
         expect(mockAuthService.loginWithPassword).toHaveBeenCalled();
       });
-    });
+    }));
   });
 });

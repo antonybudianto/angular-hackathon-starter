@@ -33,7 +33,7 @@ export class ResetPasswordComponent {
         .then(result => {
             this.email = formValue.email;
             this.afterReset = true;
-        }, err => this.errorMessage = err)
+        }, err => this.errorMessage = err.message)
         .then(() => this.isLoading = false);
     }
 }

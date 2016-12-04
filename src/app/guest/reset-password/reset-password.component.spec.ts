@@ -78,7 +78,7 @@ describe('ResetPasswordComponent', () => {
       });
     }));
 
-    it('should handle failed send', () => {
+    it('should handle failed send', async(() => {
       const mockForm = {
         valid: true,
         value: {
@@ -99,6 +99,6 @@ describe('ResetPasswordComponent', () => {
         expect(component.errorMessage).toEqual(mockError.message);
         expect(mockAuthService.sendPasswordResetEmail).toHaveBeenCalled();
       });
-    });
+    }));
   });
 });
