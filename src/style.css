@@ -9,6 +9,10 @@ body {
     height: 100%;
 }
 
+a {
+    cursor: pointer;
+}
+
 .center-fix {
     position: fixed;
     top: 50%;

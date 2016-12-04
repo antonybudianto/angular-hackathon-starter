@@ -16,7 +16,7 @@
                                 <input required class="form-control" placeholder="Please enter your password" type="password" name="password" [ngModel]="signInModel.password" #password="ngModel"/>
                             </div>
                             <div class="center-block">
-                                <span><a href="">I forgot my password</a></span>
+                                <span><a [routerLink]="['/reset-password']">I forgot my password</a></span>
                                 <button type="submit" [disabled]="isLoading" class="btn btn-primary pull-right">
                                     <span *ngIf="isLoading"><i class="fa fa-spin fa-spinner"></i></span>
                                     Sign in

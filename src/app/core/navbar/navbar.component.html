@@ -23,10 +23,22 @@
                     <a href="#contact">Contact</a>
                 </li>
                 <li>
-                    <div class="button-container">
+                    <div class="button-container" *ngIf="!user">
                         <button [routerLink]="['/register']" class="btn btn-default navbar-btn">Register</button>
                         <button [routerLink]="['/signin']" class="btn btn-default navbar-btn">Sign in</button>
                     </div>
+                </li>
+                <li *ngIf="user">
+                    <a [routerLink]="['/dashboard']">Dashboard</a>
+                </li>
+                <li class="dropdown" *ngIf="user">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Welcome. {{user.name}} <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Profile</a></li>
+                        <li><a href="#">Change password</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a (click)="logout()">Logout</a></li>
+                    </ul>
                 </li>
             </ul>
         </div>

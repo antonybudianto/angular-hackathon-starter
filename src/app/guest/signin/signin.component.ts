@@ -38,7 +38,9 @@ export class SignInComponent {
         this.errorMessage = '';
         this.authService
             .loginWithPassword(formValue.email, formValue.password)
-            .then(res => console.log(res), err => this.errorMessage = err.message)
+            .then(res => {
+                this.router.navigate(['/dashboard']);
+            }, err => this.errorMessage = err.message)
             .then(() => {
                 this.isLoading = false;
             });
