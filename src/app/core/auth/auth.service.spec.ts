@@ -16,12 +16,6 @@ const mockUser: User = {
 let mockAngularFire: any;
 let mockFirebaseAuth;
 
-function clearSubscription(subscription: Subscription) {
-  if (subscription) {
-    subscription.unsubscribe();
-  }
-}
-
 describe('Auth Service', () => {
   let service: AuthService;
 
@@ -96,7 +90,7 @@ describe('Auth Service', () => {
     it('should handle unauthenticated state', () => {
       const subscription: Subscription = service
       .getAuth$()
-      .do(() => clearSubscription(subscription))
+      .take(1)
       .subscribe(user => {
         expect(user).toBeNull();
       });
@@ -108,7 +102,7 @@ describe('Auth Service', () => {
         .and.returnValue(Observable.of(mockUser));
       const subscription: Subscription = service
       .getAuth$()
-      .do(() => clearSubscription(subscription))
+      .take(1)
       .subscribe(user => {
         expect(user).toEqual(mockUser);
       });
