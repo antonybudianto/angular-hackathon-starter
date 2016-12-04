@@ -20,7 +20,7 @@ export class ResetPasswordComponent {
 
     handleSubmit(form: any) {
         this.submitted = true;
-        this.errorMessage = null;
+        this.errorMessage = '';
 
         if (!form.valid) {
             return;
@@ -35,7 +35,5 @@ export class ResetPasswordComponent {
             this.afterReset = true;
         }, err => this.errorMessage = err)
         .then(() => this.isLoading = false);
-
-        console.log(formValue);
     }
 }
