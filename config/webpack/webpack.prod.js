@@ -31,7 +31,8 @@ module.exports = webpackMerge(commonConfig, {
   plugins: [
     new ngtools.AotPlugin({
       tsConfigPath: "./src/tsconfig-aot.json",
-      mainPath: "main.ts"
+      mainPath: "main.ts",
+      skipCodeGeneration: true
     }),
     new webpack.NoErrorsPlugin(),
     new webpack.optimize.UglifyJsPlugin(),
