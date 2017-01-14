@@ -2,7 +2,7 @@
 # yarn lockfile v1
 
 
-"@angular/common@2.4.3", "@angular/common@^2.0.0":
+"@angular/common@2.4.3":
   version "2.4.3"
   resolved "https://registry.yarnpkg.com/@angular/common/-/common-2.4.3.tgz#78d96bd2f8a1a105f635cd25e362ba5704b47f56"
 
@@ -14,11 +14,11 @@
     minimist "^1.2.0"
     reflect-metadata "^0.1.2"
 
-"@angular/compiler@2.4.3", "@angular/compiler@^2.0.0":
+"@angular/compiler@2.4.3":
   version "2.4.3"
   resolved "https://registry.yarnpkg.com/@angular/compiler/-/compiler-2.4.3.tgz#76a41916f90eda66643107740c4a9ae45cb7a6c1"
 
-"@angular/core@2.4.3", "@angular/core@^2.0.0":
+"@angular/core@2.4.3":
   version "2.4.3"
   resolved "https://registry.yarnpkg.com/@angular/core/-/core-2.4.3.tgz#a72a13bb9f01659b8388558cd6e3a570a8434b1c"
 
@@ -30,11 +30,11 @@
   version "2.4.3"
   resolved "https://registry.yarnpkg.com/@angular/http/-/http-2.4.3.tgz#d8afca7362efb010600fde02360e01e848579be6"
 
-"@angular/platform-browser-dynamic@2.4.3", "@angular/platform-browser-dynamic@^2.0.0":
+"@angular/platform-browser-dynamic@2.4.3":
   version "2.4.3"
   resolved "https://registry.yarnpkg.com/@angular/platform-browser-dynamic/-/platform-browser-dynamic-2.4.3.tgz#d65cc9bc4487e2a86e2c6f6641c711fccfa90c5a"
 
-"@angular/platform-browser@2.4.3", "@angular/platform-browser@^2.0.0":
+"@angular/platform-browser@2.4.3":
   version "2.4.3"
   resolved "https://registry.yarnpkg.com/@angular/platform-browser/-/platform-browser-2.4.3.tgz#eba8588d2fffc39d0b85a9180c297d9ca2f1f3a4"
 
@@ -97,13 +97,13 @@
   version "0.0.32"
   resolved "https://registry.yarnpkg.com/@types/q/-/q-0.0.32.tgz#bd284e57c84f1325da702babfc82a5328190c0c5"
 
-"@types/selenium-webdriver@*", "@types/selenium-webdriver@2.53.37":
-  version "2.53.37"
-  resolved "https://registry.yarnpkg.com/@types/selenium-webdriver/-/selenium-webdriver-2.53.37.tgz#34f743c20e53ae7100ede90870fde554df2447f8"
-
-"@types/selenium-webdriver@2.44.28":
+"@types/selenium-webdriver@*", "@types/selenium-webdriver@2.44.28":
   version "2.44.28"
   resolved "https://registry.yarnpkg.com/@types/selenium-webdriver/-/selenium-webdriver-2.44.28.tgz#d9c12068bf06d1de95fa31a65a0abcba1aa9fcbc"
+
+"@types/selenium-webdriver@2.53.37":
+  version "2.53.37"
+  resolved "https://registry.yarnpkg.com/@types/selenium-webdriver/-/selenium-webdriver-2.53.37.tgz#34f743c20e53ae7100ede90870fde554df2447f8"
 
 abbrev@1, abbrev@1.0.x:
   version "1.0.9"
@@ -217,17 +217,9 @@ angular2-template-loader@^0.6.0:
   dependencies:
     loader-utils "^0.2.15"
 
-angularfire2@^2.0.0-beta.6:
-  version "2.0.0-beta.7-pre"
-  resolved "https://registry.yarnpkg.com/angularfire2/-/angularfire2-2.0.0-beta.7-pre.tgz#596419077187f2d6e79e46e8beac2e685d92f045"
-  dependencies:
-    "@angular/common" "^2.0.0"
-    "@angular/compiler" "^2.0.0"
-    "@angular/core" "^2.0.0"
-    "@angular/platform-browser" "^2.0.0"
-    "@angular/platform-browser-dynamic" "^2.0.0"
-    firebase "^3.0.0"
-    rxjs "^5.0.1"
+angularfire2@2.0.0-beta.7:
+  version "2.0.0-beta.7"
+  resolved "https://registry.yarnpkg.com/angularfire2/-/angularfire2-2.0.0-beta.7.tgz#ce4f98467c5a8b2cc1dfd607fda718aee8d64521"
 
 ansi-align@^1.1.0:
   version "1.1.0"
@@ -236,8 +228,8 @@ ansi-align@^1.1.0:
     string-width "^1.0.1"
 
 ansi-regex@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/ansi-regex/-/ansi-regex-2.0.0.tgz#c5061b6e0ef8a81775e50f5d66151bf6bf371107"
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/ansi-regex/-/ansi-regex-2.1.1.tgz#c3b33ab5ee360d86e0e628f0468ae7ef27d654df"
 
 ansi-styles@^2.2.1:
   version "2.2.1"
@@ -2003,7 +1995,7 @@ extglob@^0.3.1:
   dependencies:
     is-extglob "^1.0.0"
 
-extract-text-webpack-plugin@^2.0.0-beta.4:
+extract-text-webpack-plugin@^2.0.0-beta.5:
   version "2.0.0-beta.5"
   resolved "https://registry.yarnpkg.com/extract-text-webpack-plugin/-/extract-text-webpack-plugin-2.0.0-beta.5.tgz#595e32ae2466ad2129a928328485fcc064ce57f0"
   dependencies:
@@ -2114,7 +2106,7 @@ findup-sync@~0.3.0:
   dependencies:
     glob "~5.0.0"
 
-firebase@^3.0.0:
+firebase@^3.6.5:
   version "3.6.5"
   resolved "https://registry.yarnpkg.com/firebase/-/firebase-3.6.5.tgz#e321da57c9c5b66e436432a3e15f1cf6d3b2f9a9"
   dependencies:
@@ -3594,13 +3586,17 @@ minimatch@0.3:
   dependencies:
     brace-expansion "^1.0.0"
 
-minimist@0.0.8, minimist@~0.0.1:
+minimist@0.0.8:
   version "0.0.8"
   resolved "https://registry.yarnpkg.com/minimist/-/minimist-0.0.8.tgz#857fcabfc3397d2625b8228262e86aa7a011b05d"
 
 minimist@1.2.0, minimist@^1.1.0, minimist@^1.1.3, minimist@^1.2.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/minimist/-/minimist-1.2.0.tgz#a35008b20f41383eec1fb914f4cd5df79a264284"
+
+minimist@~0.0.1:
+  version "0.0.10"
+  resolved "https://registry.yarnpkg.com/minimist/-/minimist-0.0.10.tgz#de3f98543dbf96082be48ad1a0c7cda836301dcf"
 
 mkdirp@0.3.0:
   version "0.3.0"
@@ -5187,7 +5183,7 @@ rx@4.1.0:
   version "4.1.0"
   resolved "https://registry.yarnpkg.com/rx/-/rx-4.1.0.tgz#a5f13ff79ef3b740fe30aa803fb09f98805d4782"
 
-rxjs@5.0.3, rxjs@^5.0.1:
+rxjs@5.0.3:
   version "5.0.3"
   resolved "https://registry.yarnpkg.com/rxjs/-/rxjs-5.0.3.tgz#fc8bdf464ebf938812748e4196788f392fef9754"
   dependencies:
