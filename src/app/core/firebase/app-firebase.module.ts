@@ -4,7 +4,7 @@ import { AngularFireModule, AuthProviders, AuthMethods } from 'angularfire2';
 
 import { firebaseConfig } from './config';
 
-const firebaseAuthConfig: any = {
+export const firebaseAuthConfig: any = {
     provider: AuthProviders.Password,
     method: AuthMethods.Password
 };
