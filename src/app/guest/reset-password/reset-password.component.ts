@@ -10,7 +10,7 @@ import { Component } from '@angular/core';
     ]
 })
 export class ResetPasswordComponent {
-    submitted: boolean = false;
+    submitted = false;
     errorMessage: string;
     isLoading: boolean;
     email: string;
