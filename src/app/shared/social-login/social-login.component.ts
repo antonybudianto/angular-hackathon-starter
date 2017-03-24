@@ -12,10 +12,10 @@ import { AuthService } from './../../core/auth/auth.service';
 export class SocialLoginComponent {
 
     @Output()
-    private successLogin: EventEmitter<any> = new EventEmitter<any>();
+    successLogin: EventEmitter<any> = new EventEmitter<any>();
 
     @Output()
-    private failedLogin: EventEmitter<any> = new EventEmitter<any>();
+    failedLogin: EventEmitter<any> = new EventEmitter<any>();
 
     constructor(private authService: AuthService) {}
 

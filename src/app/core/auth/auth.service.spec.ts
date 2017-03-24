@@ -13,26 +13,32 @@ const mockUser: User = {
   password: 'asd'
 };
 
-let mockAngularFire: any;
-let mockFirebaseAuth;
+let mockAfAuth: any;
+let mockAfDb;
+// let mockFirebaseAuth;
 
 describe('Auth Service', () => {
   let service: AuthService;
 
   beforeEach(() => {
-    mockFirebaseAuth = jasmine.createSpyObj('auth', ['sendPasswordResetEmail']);
-    spyOn(firebase, 'auth').and.returnValue(mockFirebaseAuth);
-    mockAngularFire = {
-      auth: mockAuthSource.asObservable(),
-      database: {
-        object: jasmine.createSpy('object')
-      }
+    // mockFirebaseAuth = jasmine.createSpyObj('auth', ['sendPasswordResetEmail']);
+    // spyOn(firebase, 'auth').and.returnValue(mockFirebaseAuth);
+    mockAfAuth = {
+      auth: jasmine.createSpyObj('afAuth', [
+        'signOut',
+        'signInWithPopup',
+        'signInWithEmailAndPassword',
+        'sendPasswordResetEmail',
+        'sendEmailVerification',
+        'createUserWithEmailAndPassword'
+      ]),
+      authState: mockAuthSource.asObservable()
     };
-    mockAngularFire.auth.createUser = jasmine.createSpy('createUser');
-    mockAngularFire.auth.login = jasmine.createSpy('login');
-    mockAngularFire.auth.logout = jasmine.createSpy('logout');
+    mockAfDb = {
+      object: jasmine.createSpy('object')
+    };
 
-    service = new AuthService(mockAngularFire);
+    service = new AuthService(mockAfAuth, mockAfDb);
   });
 
   it('should be created successfully', () => {
@@ -41,27 +47,27 @@ describe('Auth Service', () => {
 
   it('should set password reset email', () => {
     service.sendPasswordResetEmail('antonybudianto@gmail.com');
-    expect(mockFirebaseAuth.sendPasswordResetEmail).toHaveBeenCalled();
+    expect(mockAfAuth.auth.sendPasswordResetEmail).toHaveBeenCalled();
   });
 
   it('can login with google', () => {
     service.loginWithGoogle();
-    expect(mockAngularFire.auth.login).toHaveBeenCalled();
+    expect(mockAfAuth.auth.signInWithPopup).toHaveBeenCalled();
   });
 
   it('can login with facebook', () => {
     service.loginWithFacebook();
-    expect(mockAngularFire.auth.login).toHaveBeenCalled();
+    expect(mockAfAuth.auth.signInWithPopup).toHaveBeenCalled();
   });
 
   it('can login with twitter', () => {
     service.loginWithTwitter();
-    expect(mockAngularFire.auth.login).toHaveBeenCalled();
+    expect(mockAfAuth.auth.signInWithPopup).toHaveBeenCalled();
   });
 
   it('should logout successfully', () => {
     service.logout();
-    expect(mockAngularFire.auth.logout).toHaveBeenCalled();
+    expect(mockAfAuth.auth.signOut).toHaveBeenCalled();
   });
 
   describe('loginWithPassword', () => {
@@ -69,7 +75,7 @@ describe('Auth Service', () => {
       const mockResult = {
         message: 'ok'
       };
-      mockAngularFire.auth.login
+      mockAfAuth.auth.signInWithEmailAndPassword
         .and.returnValue(Promise.resolve(mockResult));
       service.loginWithPassword('test@t.com', 'asd')
         .then(result => expect(result).toEqual(mockResult));
@@ -79,7 +85,7 @@ describe('Auth Service', () => {
       const mockError = {
         message: 'error'
       };
-      mockAngularFire.auth.login
+      mockAfAuth.auth.signInWithEmailAndPassword
         .and.returnValue(Promise.reject(mockError));
       service.loginWithPassword('test@t.com', 'asd')
         .then(null, error => expect(error).toEqual(mockError));
@@ -98,7 +104,7 @@ describe('Auth Service', () => {
     });
 
     it('should handle Observable of user when authenticated', () => {
-      mockAngularFire.database.object
+      mockAfDb.object
         .and.returnValue(Observable.of(mockUser));
       const subscription: Subscription = service
       .getAuth$()
@@ -118,8 +124,8 @@ describe('Auth Service', () => {
       const mockObject = {
           set: jasmine.createSpy('set').and.returnValue(Promise.resolve())
       };
-      mockAngularFire.database.object.and.returnValue(mockObject);
-      mockAngularFire.auth.createUser
+      mockAfDb.object.and.returnValue(mockObject);
+      mockAfAuth.auth.createUserWithEmailAndPassword
         .and.returnValue(Promise.resolve(mockResult));
       service.createUser(mockUser)
         .then(result => expect(result).toEqual(mockResult));
@@ -129,7 +135,7 @@ describe('Auth Service', () => {
       const mockError = {
         message: 'test'
       };
-      mockAngularFire.auth.createUser
+      mockAfAuth.auth.createUserWithEmailAndPassword
         .and.returnValue(Promise.reject(mockError));
       service.createUser(mockUser)
         .then(null, err => expect(err).toEqual(mockError));
@@ -138,22 +144,16 @@ describe('Auth Service', () => {
 
   describe('sendVerificationEmail', () => {
     it('should send once', () => {
-      const mockAuth = {
-        auth: jasmine.createSpyObj('auth', ['sendEmailVerification'])
-      };
       service.sendVerificationEmail();
       mockAuthSource.next(null);
-      mockAuthSource.next(mockAuth);
-      expect(mockAuth.auth.sendEmailVerification).toHaveBeenCalled();
+      mockAuthSource.next(mockAfAuth.auth);
+      expect(mockAfAuth.auth.sendEmailVerification).toHaveBeenCalled();
     });
 
     it('should not send when unauthenticated', () => {
-      const mockAuth = {
-        auth: jasmine.createSpyObj('auth', ['sendEmailVerification'])
-      };
       service.sendVerificationEmail();
       mockAuthSource.next(null);
-      expect(mockAuth.auth.sendEmailVerification).not.toHaveBeenCalled();
+      expect(mockAfAuth.auth.sendEmailVerification).not.toHaveBeenCalled();
     });
   });
 });

@@ -1,100 +1,86 @@
 import { Injectable } from '@angular/core';
 
-import { AngularFire, AuthProviders, AuthMethods } from 'angularfire2';
+import { AngularFireAuth } from 'angularfire2/auth';
+import { AngularFireDatabase } from 'angularfire2/database';
 import { Subject, Observable, Subscription } from 'rxjs';
-import * as firebase from 'firebase';
+import { GoogleAuthProvider, FacebookAuthProvider, TwitterAuthProvider } from 'firebase/auth';
 
 import { User } from './user.model';
 
 @Injectable()
 export class AuthService {
     private sendEmailSubscription: Subscription;
-    private firebaseAuth: any;
 
-    constructor(private af: AngularFire) {
-        this.firebaseAuth = firebase.auth();
-    }
+    constructor(private afAuth: AngularFireAuth,
+                private afDb: AngularFireDatabase) {}
 
     getAuth$(): Observable<User> {
-        return this.af.auth
-        .switchMap(auth => {
+        return this.afAuth.authState
+        .switchMap((auth: any) => {
             if (auth) {
-                return this.af.database.object('/users/' + auth.uid);
+                return this.afDb.object('/users/' + auth.uid);
             }
             return Observable.of(null);
         });
     }
 
     createUser(user: User): Promise<any> {
-        return this.af.auth
-            .createUser({
-                email: user.email,
-                password: user.password
-            })
-            .then(
-                res => {
-                    this.sendVerificationEmail();
-                    return this.af.database
-                    .object('/users/' + res.uid)
-                    .set({
-                        uid: res.uid,
-                        name: user.name,
-                        email: user.email
-                    })
-                    .then(() => Promise.resolve(res));
-                },
-                err => Promise.reject({
-                    message: err.message
+        const { email, password } = user;
+        return this.afAuth.auth.createUserWithEmailAndPassword(email, password)
+        .then(
+            res => {
+                this.sendVerificationEmail();
+                return this.afDb
+                .object('/users/' + res.uid)
+                .set({
+                    uid: res.uid,
+                    name: user.name,
+                    email: user.email
                 })
-            );
+                .then(() => Promise.resolve(res));
+            },
+            err => Promise.reject({
+                message: err.message
+            })
+        );
     }
 
     sendPasswordResetEmail(email: string): Promise<any> {
-        return this.firebaseAuth.sendPasswordResetEmail(email);
+        return this.afAuth.auth.sendPasswordResetEmail(email);
     }
 
     sendVerificationEmail() {
-        this.sendEmailSubscription = this.af.auth
-        .filter(auth => !!auth)
+        this.sendEmailSubscription = this.afAuth.authState
+        .filter((auth: any) => !!auth)
         .take(1)
-        .subscribe(auth => {
-            auth.auth.sendEmailVerification();
+        .subscribe((auth: any) => {
+            auth.sendEmailVerification();
         });
     }
 
     loginWithPassword(email: string, password: string): Promise<any> {
-        return this.af.auth
-            .login({ email, password })
-            .then(
-                res => Promise.resolve(res),
-                err => Promise.reject({
-                    message: err.message
-                })
-            );
+        return this.afAuth.auth.signInWithEmailAndPassword(email, password)
+        .then(
+            res => Promise.resolve(res),
+            err => Promise.reject({
+                message: err.message
+            })
+        );
     }
 
     loginWithGoogle(): Promise<any> {
-        return this.af.auth.login({
-            provider: AuthProviders.Google,
-            method: AuthMethods.Popup
-        });
+        return this.afAuth.auth.signInWithPopup(new GoogleAuthProvider());
     }
 
     loginWithFacebook(): Promise<any> {
-        return this.af.auth.login({
-            provider: AuthProviders.Facebook,
-            method: AuthMethods.Popup
-        });
+        return this.afAuth.auth.signInWithPopup(new FacebookAuthProvider());
     }
 
     loginWithTwitter(): Promise<any> {
-        return this.af.auth.login({
-            provider: AuthProviders.Twitter,
-            method: AuthMethods.Popup
-        });
+        return this.afAuth.auth.signInWithPopup(new TwitterAuthProvider());
     }
 
     logout() {
-        this.af.auth.logout();
+        this.afAuth.auth.signOut();
     }
 }
