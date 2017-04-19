@@ -3,7 +3,6 @@ const webpackMerge = require('webpack-merge');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
-const ngtools = require('@ngtools/webpack');
 
 const commonConfig = require('./webpack.common.js');
 const helpers = require('./helpers');
@@ -14,10 +13,32 @@ module.exports = webpackMerge(commonConfig, {
   module: {
     rules: [
       {
-        enforce: 'post',
         test: /\.ts$/,
-        loaders: ['@ngtools/webpack'],
-        exclude: [/\.(spec|e2e)\.ts$/]
+        loaders: 'awesome-typescript-loader',
+        query: {
+          forkChecker: true
+        },
+        exclude: [
+          /node_modules/
+        ]
+      },
+      {
+        test: /\.ts$/,
+        loaders: [
+          'angular2-template-loader'
+        ],
+        exclude: [
+          /node_modules/
+        ]
+      },
+      {
+        test: /\.ts$/,
+        loaders: [
+          'angular-router-loader?loader=system&genDir=src&aot=false'
+        ],
+        exclude: [
+          /node_modules/
+        ]
       }
     ]
   },
@@ -29,11 +50,6 @@ module.exports = webpackMerge(commonConfig, {
   },
 
   plugins: [
-    new ngtools.AotPlugin({
-      tsConfigPath: "./src/tsconfig-aot.json",
-      mainPath: "main.ts",
-      // skipCodeGeneration: true
-    }),
     new webpack.NoEmitOnErrorsPlugin(),
     new webpack.optimize.UglifyJsPlugin(),
     new ExtractTextPlugin({

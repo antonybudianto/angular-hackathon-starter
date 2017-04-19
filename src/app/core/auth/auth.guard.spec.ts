@@ -8,7 +8,9 @@ const mockFirebaseAuthSource: Subject<any> = new Subject<any>();
 
 describe('Auth Guard', () => {
   beforeEach(() => {
-    mockFirebaseAuth = mockFirebaseAuthSource.asObservable();
+    mockFirebaseAuth = {
+      authState: mockFirebaseAuthSource.asObservable()
+    };
     mockRouter = jasmine.createSpyObj('Router', ['navigate']);
     service = new AuthGuard(mockFirebaseAuth, mockRouter);
   });

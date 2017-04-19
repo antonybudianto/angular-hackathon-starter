@@ -1,6 +1,6 @@
 const webpack = require('webpack');
 const chalk = require('chalk');
-const env = require('dotenv').config({ silent: true });
+const env = require('dotenv').config().parsed;
 const _ = require('lodash');
 
 const constants = require('./constants');
@@ -16,6 +16,9 @@ if (!envMap.APP_ENV) {
 }
 
 module.exports = {
+  performance: {
+    hints: false
+  },
   resolve: {
     extensions: ['.js', '.ts'],
     modules: ['node_modules', helpers.root('src')]
@@ -29,10 +32,10 @@ module.exports = {
         $: 'jquery',
         jquery: 'jquery'
     }),
-    new webpack.ContextReplacementPlugin(
-      // The (\\|\/) piece accounts for path separators in *nix and Windows
-      constants.CONTEXT_REPLACE_REGEX,
-      helpers.root('./src') // location of your src
-    )
+    // new webpack.ContextReplacementPlugin(
+    //   // The (\\|\/) piece accounts for path separators in *nix and Windows
+    //   constants.CONTEXT_REPLACE_REGEX,
+    //   helpers.root('./src') // location of your src
+    // )
   ]
 };

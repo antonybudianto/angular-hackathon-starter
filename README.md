@@ -37,6 +37,9 @@ npm install
 
 Then copy `.env.example` and rename it as `.env`. For more [details](https://github.com/antonybudianto/angular-webpack-starter/wiki/Environment-Variables)
 
+After that, get your Firebase app config from Firebase console, and export them at
+`src/app/core/firebase/config.ts`
+
 ## Start
 Let's start up, run following:
 ```bash

@@ -1,17 +1,16 @@
 import { NgModule } from '@angular/core';
 
-import { AngularFireModule, AuthProviders, AuthMethods } from 'angularfire2';
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFireAuthModule } from 'angularfire2/auth';
 
 import { firebaseConfig } from './config';
 
-const firebaseAuthConfig: any = {
-    provider: AuthProviders.Password,
-    method: AuthMethods.Password
-};
-
 @NgModule({
     imports: [
-        AngularFireModule.initializeApp(firebaseConfig, firebaseAuthConfig)
+        AngularFireModule.initializeApp(firebaseConfig),
+        AngularFireDatabaseModule,
+        AngularFireAuthModule
     ]
 })
 export class AppFirebaseModule {
